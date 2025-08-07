@@ -1,0 +1,26 @@
+[
+  {
+    "title": "UMC Fleet Management",
+    "description": "A full-stack web app to track ambulance maintenance. Built with React, Node.js, and MongoDB.",
+    "tech": ["React", "Node.js", "Express", "MongoDB"],
+    "github": "https://github.com/JesusV545/umc-fleet-management",
+    "demo": "#",
+    "image": "umc-fleet.png"
+  },
+  {
+    "title": "Rescue Track",
+    "description": "A Java-based system to track rescued animals with OOP principles and data validation.",
+    "tech": ["Java", "OOP", "Data Structures"],
+    "github": "#",
+    "demo": "#",
+    "image": "rescue-track.png"
+  },
+  {
+    "title": "Investment Simulator",
+    "description": "C++ console app that calculates compound growth with and without monthly deposits.",
+    "tech": ["C++", "OOP", "CLI"],
+    "github": "#",
+    "demo": "#",
+    "image": "investment-sim.png"
+  }
+]
