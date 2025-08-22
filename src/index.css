@@ -18,3 +18,9 @@
     animation: fade-in 0.3s ease-out both;
   }
 }
+html { scroll-behavior: smooth; }
+
+/* (recommended) respect reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
