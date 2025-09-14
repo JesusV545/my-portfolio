@@ -21,6 +21,10 @@
     "tech": ["C++", "OOP", "CLI"],
     "github": "#",
     "demo": "#",
-    "image": "investment-sim.png"
+    "images": [
+      "investment-sim.png",
+      "investment-graph.png",
+      "investment-finance.png"
+    ]
   }
 ]
