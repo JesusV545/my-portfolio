@@ -1,4 +1,5 @@
-import projects from '../data/projects.json';
+import { useState, useEffect, useMemo, useRef } from "react";
+import projects from "../data/projects.json";
 
 export default function Projects() {
   return (
@@ -10,64 +11,145 @@ export default function Projects() {
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {projects.map((project, index) => {
-            const imagePath = new URL(
-              `../assets/projects/${project.image}`,
-              import.meta.url
-            ).href;
-
-            return (
-              <div
-                key={index}
-                className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-left"
-              >
-                {project.image && (
-                  <img
-                    src={imagePath}
-                    alt={`${project.title} preview`}
-                    className="w-full h-48 object-cover"
-                  />
-                )}
-
-                <div className="p-6">
-                  <h3 className="text-xl font-semibold text-gray-800 mb-2">
-                    {project.title}
-                  </h3>
-                  <p className="text-gray-600 mb-4">{project.description}</p>
-                  <div className="flex flex-wrap gap-2 text-sm mb-4">
-                    {project.tech.map((t, i) => (
-                      <span
-                        key={i}
-                        className="bg-blue-100 text-blue-800 px-2 py-1 rounded-md"
-                      >
-                        {t}
-                      </span>
-                    ))}
-                  </div>
-                  <div className="flex gap-4">
-                    <a
-                      href={project.github}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      GitHub
-                    </a>
-                    <a
-                      href={project.demo}
-                      target="_blank"
-                      rel="noreferrer"
-                      className="text-blue-600 hover:underline"
-                    >
-                      Live Demo
-                    </a>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
+          {projects.map((p, i) => (
+            <ProjectCard key={i} {...p} />
+          ))}
         </div>
       </div>
     </section>
+  );
+}
+
+function ProjectCard({ title, description, tech = [], github, demo, image, images }) {
+  // Normalize to an array so we support both "image" and "images"
+  const imageList = useMemo(() => images || (image ? [image] : []), [images, image]);
+
+  const [current, setCurrent] = useState(0);
+  const [isHover, setIsHover] = useState(false);
+  const intervalRef = useRef(null);
+
+  // Preload images to avoid flicker during fade
+  useEffect(() => {
+    imageList.forEach((img) => {
+      const i = new Image();
+      i.src = new URL(`../assets/projects/${img}`, import.meta.url).href;
+    });
+  }, [imageList]);
+
+  // Auto-cycle every 3s (pause when hovering)
+  useEffect(() => {
+    if (imageList.length <= 1 || isHover) return;
+    intervalRef.current = setInterval(() => {
+      setCurrent((prev) => (prev + 1) % imageList.length);
+    }, 3000);
+    return () => clearInterval(intervalRef.current);
+  }, [imageList.length, isHover]);
+
+  const goPrev = () => {
+    if (imageList.length <= 1) return;
+    setCurrent((prev) => (prev - 1 + imageList.length) % imageList.length);
+  };
+
+  const goNext = () => {
+    if (imageList.length <= 1) return;
+    setCurrent((prev) => (prev + 1) % imageList.length);
+  };
+
+  return (
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-left">
+      {/* Cross-fade carousel */}
+      {imageList.length > 0 && (
+        <div
+          className="relative w-full h-48 bg-gray-100 overflow-hidden"
+          onMouseEnter={() => setIsHover(true)}
+          onMouseLeave={() => setIsHover(false)}
+        >
+          {/* Stack all images and fade opacity based on 'current' */}
+          {imageList.map((img, idx) => {
+            const src = new URL(`../assets/projects/${img}`, import.meta.url).href;
+            const isActive = idx === current;
+            return (
+              <img
+                key={img}
+                src={src}
+                alt={`${title} preview ${idx + 1}`}
+                className={[
+                  "absolute inset-0 w-full h-full object-cover",
+                  // Smooth fade (tweak duration/easing if you want even softer)
+                  "transition-opacity duration-700 ease-in-out",
+                  isActive ? "opacity-100" : "opacity-0",
+                ].join(" ")}
+                // Prevent layout shift on load
+                loading="eager"
+                draggable={false}
+              />
+            );
+          })}
+
+          {/* Arrows (only if multiple images) */}
+          {imageList.length > 1 && (
+            <>
+              <button
+                onClick={goPrev}
+                aria-label="Previous image"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow px-2 py-1 rounded-md text-gray-700"
+              >
+                ‹
+              </button>
+              <button
+                onClick={goNext}
+                aria-label="Next image"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow px-2 py-1 rounded-md text-gray-700"
+              >
+                ›
+              </button>
+
+              {/* Dots */}
+              <div className="absolute bottom-2 left-0 right-0 flex justify-center gap-2">
+                {imageList.map((_, i) => (
+                  <button
+                    key={i}
+                    aria-label={`Go to image ${i + 1}`}
+                    onClick={() => setCurrent(i)}
+                    className={`h-2.5 w-2.5 rounded-full border border-white/70 ${
+                      i === current ? "bg-white" : "bg-black/30"
+                    }`}
+                  />
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      )}
+
+      {/* Content */}
+      <div className="p-6">
+        <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
+        <p className="text-gray-600 mb-4">{description}</p>
+
+        {tech.length > 0 && (
+          <div className="flex flex-wrap gap-2 text-sm mb-4">
+            {tech.map((t, i) => (
+              <span key={i} className="bg-blue-100 text-blue-800 px-2 py-1 rounded-md">
+                {t}
+              </span>
+            ))}
+          </div>
+        )}
+
+        <div className="flex gap-4">
+          {github && (
+            <a href={github} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+              GitHub
+            </a>
+          )}
+          {demo && (
+            <a href={demo} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
+              Live Demo
+            </a>
+          )}
+        </div>
+      </div>
+    </div>
   );
 }
