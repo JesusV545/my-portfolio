@@ -17,16 +17,20 @@
     ]
   },
   {
-    "title": "Rescue Track",
-    "description": "A Java-based system to track rescued animals with OOP principles and data validation.",
+    "title": "GreenUP",
+    "description": "Sustainability-focused web app that motivates communities to take eco-friendly actions with tracked challenges and resources.",
     "tech": [
-      "Java",
-      "OOP",
-      "Data Structures"
+      "React",
+      "Tailwind CSS",
+      "Node.js"
     ],
-    "github": "#",
-    "demo": "#",
-    "image": "rescue-track.png"
+    "github": "https://github.com/JesusV545/GreenUP",
+    "demo": "https://greenup-production.up.railway.app/",
+    "images": [
+      "GreenUpLanding.png",
+      "GreenUPAbout.png",
+      "greenUPLogo.png"
+    ]
   },
   {
     "title": "Investment Simulator",
