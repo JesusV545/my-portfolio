@@ -3,11 +3,11 @@ import projects from "../data/projects.json";
 
 export default function Projects() {
   return (
-    <section id="projects" className="py-20 px-6 bg-gray-50">
+    <section id="projects" className="py-20 px-6 bg-brand-100/40">
       <div className="max-w-7xl mx-auto text-center">
-        <h2 className="text-4xl font-bold text-gray-900 mb-4">Projects</h2>
-        <p className="text-gray-600 mb-12">
-          A selection of software and web development work I’ve done.
+        <h2 className="text-4xl font-bold text-brand-900 mb-4">Projects</h2>
+        <p className="text-brand-700 mb-12">
+          A selection of software and web development work I've done.
         </p>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -20,7 +20,7 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ title, description, tech = [], github, demo, image, images }) {
+function ProjectCard({ title, description, tech = [], github, image, images }) {
   // Normalize to an array so we support both "image" and "images"
   const imageList = useMemo(() => images || (image ? [image] : []), [images, image]);
 
@@ -56,11 +56,11 @@ function ProjectCard({ title, description, tech = [], github, demo, image, image
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-left">
+    <div className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300 text-left border border-brand-300/50">
       {/* Cross-fade carousel */}
       {imageList.length > 0 && (
         <div
-          className="relative w-full h-48 bg-gray-100 overflow-hidden"
+          className="relative w-full h-48 bg-brand-100 overflow-hidden"
           onMouseEnter={() => setIsHover(true)}
           onMouseLeave={() => setIsHover(false)}
         >
@@ -92,16 +92,16 @@ function ProjectCard({ title, description, tech = [], github, demo, image, image
               <button
                 onClick={goPrev}
                 aria-label="Previous image"
-                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow px-2 py-1 rounded-md text-gray-700"
+                className="absolute left-2 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white shadow px-2 py-1 rounded-md text-brand-900"
               >
-                ‹
+                &lt;
               </button>
               <button
                 onClick={goNext}
                 aria-label="Next image"
-                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/80 hover:bg-white shadow px-2 py-1 rounded-md text-gray-700"
+                className="absolute right-2 top-1/2 -translate-y-1/2 bg-white/85 hover:bg-white shadow px-2 py-1 rounded-md text-brand-900"
               >
-                ›
+                &gt;
               </button>
 
               {/* Dots */}
@@ -112,7 +112,7 @@ function ProjectCard({ title, description, tech = [], github, demo, image, image
                     aria-label={`Go to image ${i + 1}`}
                     onClick={() => setCurrent(i)}
                     className={`h-2.5 w-2.5 rounded-full border border-white/70 ${
-                      i === current ? "bg-white" : "bg-black/30"
+                      i === current ? "bg-brand-500" : "bg-brand-300"
                     }`}
                   />
                 ))}
@@ -124,31 +124,29 @@ function ProjectCard({ title, description, tech = [], github, demo, image, image
 
       {/* Content */}
       <div className="p-6">
-        <h3 className="text-xl font-semibold text-gray-800 mb-2">{title}</h3>
-        <p className="text-gray-600 mb-4">{description}</p>
+        <h3 className="text-xl font-semibold text-brand-900 mb-2">{title}</h3>
+        <p className="text-brand-700 mb-4">{description}</p>
 
         {tech.length > 0 && (
           <div className="flex flex-wrap gap-2 text-sm mb-4">
             {tech.map((t, i) => (
-              <span key={i} className="bg-blue-100 text-blue-800 px-2 py-1 rounded-md">
+              <span key={i} className="bg-brand-100 text-brand-700 px-2 py-1 rounded-md border border-brand-300/60">
                 {t}
               </span>
             ))}
           </div>
         )}
 
-        <div className="flex gap-4">
-          {github && (
-            <a href={github} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
-              GitHub
-            </a>
-          )}
-          {demo && (
-            <a href={demo} target="_blank" rel="noreferrer" className="text-blue-600 hover:underline">
-              Live Demo
-            </a>
-          )}
-        </div>
+        {github && (
+          <a
+            href={github}
+            target="_blank"
+            rel="noreferrer"
+            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 hover:text-brand-900 transition-colors"
+          >
+            GitHub
+          </a>
+        )}
       </div>
     </div>
   );

@@ -14,7 +14,7 @@ function Field({ id, label, type = "text", icon: Icon, required = false, ...prop
     <div className="relative">
       {Icon && (
         <span className="absolute left-3 top-1/2 -translate-y-1/2 pointer-events-none">
-          <Icon size={18} className="text-gray-400" />
+          <Icon size={18} className="text-brand-500" />
         </span>
       )}
       <input
@@ -24,9 +24,9 @@ function Field({ id, label, type = "text", icon: Icon, required = false, ...prop
         required={required}
         placeholder=" "
         className="
-          peer w-full rounded-xl border bg-white/70
-          px-10 py-3 border-gray-200 shadow-sm
-          focus:outline-none focus:ring-2 focus:ring-blue-600/60 focus:border-blue-600
+          peer w-full rounded-xl border bg-white/85
+          px-10 py-3 border-brand-300/50 shadow-sm
+          focus:outline-none focus:ring-2 focus:ring-brand-500/60 focus:border-brand-700
           placeholder-transparent
         "
         {...props}
@@ -35,9 +35,9 @@ function Field({ id, label, type = "text", icon: Icon, required = false, ...prop
         htmlFor={id}
         className="
           pointer-events-none absolute left-10 top-1/2 -translate-y-1/2
-          bg-white/70 px-1 text-gray-500 transition-all duration-150
-          peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-gray-400 peer-placeholder-shown:text-base
-          peer-focus:-top-2 peer-focus:text-xs peer-focus:text-blue-700
+          bg-white/85 px-1 text-brand-500 transition-all duration-150
+          peer-placeholder-shown:top-1/2 peer-placeholder-shown:text-brand-300 peer-placeholder-shown:text-base
+          peer-focus:-top-2 peer-focus:text-xs peer-focus:text-brand-700
           peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:text-xs
         "
       >
@@ -57,9 +57,9 @@ function TextArea({ id, label, required = false, ...props }) {
         placeholder=" "
         rows={6}
         className="
-          peer w-full rounded-xl border bg-white/70
-          px-4 py-3 border-gray-200 shadow-sm
-          focus:outline-none focus:ring-2 focus:ring-blue-600/60 focus:border-blue-600
+          peer w-full rounded-xl border bg-white/85
+          px-4 py-3 border-brand-300/50 shadow-sm
+          focus:outline-none focus:ring-2 focus:ring-brand-500/60 focus:border-brand-700
           placeholder-transparent
         "
         {...props}
@@ -68,8 +68,8 @@ function TextArea({ id, label, required = false, ...props }) {
         htmlFor={id}
         className="
           pointer-events-none absolute left-4 top-4
-          bg-white/70 px-1 text-gray-500 transition-all duration-150
-          peer-focus:-top-2 peer-focus:left-3 peer-focus:text-xs peer-focus:text-blue-700
+          bg-white/85 px-1 text-brand-500 transition-all duration-150
+          peer-focus:-top-2 peer-focus:left-3 peer-focus:text-xs peer-focus:text-brand-700
           peer-[&:not(:placeholder-shown)]:-top-2 peer-[&:not(:placeholder-shown)]:left-3 peer-[&:not(:placeholder-shown)]:text-xs
         "
       >
@@ -150,48 +150,48 @@ export default function Contact() {
   return (
     <section
       id="contact"
-      className="relative py-24 px-6 bg-gradient-to-br from-blue-50 via-white to-blue-100"
+      className="relative py-24 px-6 bg-gradient-to-br from-brand-100 via-white to-brand-300"
     >
       <div className="max-w-7xl mx-auto">
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-gray-900">Let's Connect</h2>
-          <p className="mt-3 text-gray-600">
-            Have a project in mind or just want to say hi? Drop a message — I usually reply within a day.
+          <h2 className="text-4xl font-bold text-brand-900">Let's Connect</h2>
+          <p className="mt-3 text-brand-700">
+            Have a project in mind or just want to say hi? Drop a message - I usually reply within a day.
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Info card */}
-          <div className="lg:col-span-1 rounded-2xl overflow-hidden shadow-xl border border-gray-200 bg-white/70 backdrop-blur-md">
-            <div className="h-2 bg-gradient-to-r from-blue-600 via-indigo-600 to-violet-600" />
-            <div className="p-6 space-y-5">
+          <div className="lg:col-span-1 rounded-2xl overflow-hidden shadow-xl border border-brand-300/60 bg-white/90 backdrop-blur">
+            <div className="h-2 bg-gradient-to-r from-brand-900 via-brand-700 to-brand-500" />
+            <div className="p-6 space-y-5 text-brand-700">
               <div className="flex items-start gap-3">
-                <Mail className="mt-0.5 text-gray-600" />
-                <a href="mailto:jesusvazquez690@gmail.com" className="text-gray-800 hover:underline">
+                <Mail className="mt-0.5 text-brand-500" />
+                <a href="mailto:jesusvazquez690@gmail.com" className="text-brand-900 hover:underline">
                   jesusvazquez690@gmail.com
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 text-gray-600" />
-                <a href="tel:+19563070173" className="text-gray-800 hover:underline">
+                <Phone className="mt-0.5 text-brand-500" />
+                <a href="tel:+19563070173" className="text-brand-900 hover:underline">
                   (956) 307-0173
                 </a>
               </div>
               <div className="flex items-start gap-3">
-                <MapPin className="mt-0.5 text-gray-600" />
-                <p className="text-gray-800">Laredo, TX (Open to remote)</p>
+                <MapPin className="mt-0.5 text-brand-500" />
+                <p className="text-brand-900">Laredo, TX (Open to remote)</p>
               </div>
-              <p className="text-xs text-gray-500">
+              <p className="text-xs text-brand-500">
                 Prefer email? I'm happy to sync over a quick call after your message.
               </p>
             </div>
           </div>
 
           {/* Form card */}
-          <div className="lg:col-span-2 rounded-2xl shadow-xl border border-gray-200 bg-white/80 backdrop-blur-md">
-            <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b bg-gradient-to-r from-blue-50 to-transparent rounded-t-2xl">
-              <h3 className="font-semibold text-gray-900">Send a message</h3>
-              <div className="flex items-center gap-2 text-xs text-gray-500">
+          <div className="lg:col-span-2 rounded-2xl shadow-xl border border-brand-300/60 bg-white/90 backdrop-blur">
+            <div className="flex items-center justify-between px-6 md:px-8 py-4 border-b border-brand-300/60 bg-gradient-to-r from-brand-100/80 to-transparent rounded-t-2xl">
+              <h3 className="font-semibold text-brand-900">Send a message</h3>
+              <div className="flex items-center gap-2 text-xs text-brand-500">
                 <Shield size={14} /> Encrypted in transit
               </div>
             </div>
@@ -204,10 +204,10 @@ export default function Contact() {
                 </div>
 
                 <Field id="subject" label="Subject (optional)" icon={Type} />
-                <TextArea id="message" label="Tell me about your project…" required />
+                <TextArea id="message" label="Tell me about your project..." required />
 
-                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3">
-                  <p className="text-xs text-gray-500">
+                <div className="flex flex-col md:flex-row md:items-center md:justify-between gap-3 text-brand-500">
+                  <p className="text-xs">
                     By clicking Send, you agree to be contacted about your inquiry. I typically reply within 24 hours.
                   </p>
                   <button
@@ -216,16 +216,16 @@ export default function Contact() {
                     className={`${
                       "inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white"
                     } ${
-                      sending ? "bg-blue-400 cursor-not-allowed" : "bg-blue-600 hover:bg-blue-700"
+                      sending ? "bg-brand-300 cursor-not-allowed" : "bg-brand-500 hover:bg-brand-900"
                     } shadow-sm transition-colors`}
                   >
                     <MessageSquareText size={18} />
-                    {sending ? "Sending…" : "Send"}
+                    {sending ? "Sending..." : "Send"}
                   </button>
                 </div>
 
                 {status === "ok" && (
-                  <div className="rounded-lg bg-green-50 border border-green-200 px-4 py-3 text-sm text-green-800">
+                  <div className="rounded-lg bg-brand-100 border border-brand-300 px-4 py-3 text-sm text-brand-700">
                     Thanks! Your message has been sent.
                   </div>
                 )}

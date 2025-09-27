@@ -27,8 +27,8 @@ export default function SocialRail() {
         className="
           fixed left-4 bottom-4 z-40
           hidden md:flex items-center gap-3
-          bg-white/80 backdrop-blur-md shadow-lg
-          px-3 py-2 rounded-2xl border border-gray-200
+          bg-brand-100/95 backdrop-blur shadow-lg
+          px-3 py-2 rounded-2xl border border-brand-300/60
         "
       >
         {links.map(({ href, label, Icon }) => (
@@ -39,7 +39,7 @@ export default function SocialRail() {
             rel="noreferrer"
             aria-label={label}
             title={label}
-            className="grid place-items-center w-10 h-10 rounded-xl text-gray-700 hover:text-white hover:bg-blue-600 transition-all"
+            className="grid place-items-center w-10 h-10 rounded-xl text-brand-900 hover:text-white hover:bg-brand-500 transition-all"
           >
             <Icon size={20} strokeWidth={2.2} />
           </a>
@@ -55,8 +55,8 @@ export default function SocialRail() {
       className="
         fixed left-6 top-1/2 -translate-y-1/2 z-40
         hidden md:flex flex-col gap-4
-        bg-white/70 backdrop-blur-md shadow-lg
-        p-3 rounded-2xl border border-gray-200
+        bg-brand-100/95 backdrop-blur shadow-lg
+        p-3 rounded-2xl border border-brand-300/60
       "
     >
       {links.map(({ href, label, Icon }) => (
@@ -67,7 +67,7 @@ export default function SocialRail() {
           rel="noreferrer"
           aria-label={label}
           title={label}
-          className="grid place-items-center w-10 h-10 rounded-xl text-gray-700 hover:text-white hover:bg-blue-600 transition-all"
+          className="grid place-items-center w-10 h-10 rounded-xl text-brand-900 hover:text-white hover:bg-brand-500 transition-all"
         >
           <Icon size={20} strokeWidth={2.2} />
         </a>
