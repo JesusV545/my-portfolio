@@ -9,7 +9,6 @@
       "MongoDB"
     ],
     "github": "https://github.com/JesusV545/umc-fleet-management",
-    "demo": "#",
     "images": [
       "fleet-overview.png",
       "report-damage.png",
@@ -25,7 +24,6 @@
       "Node.js"
     ],
     "github": "https://github.com/JesusV545/GreenUP",
-    "demo": "https://greenup-production.up.railway.app/",
     "images": [
       "GreenUpLanding.png",
       "GreenUPAbout.png",
@@ -40,8 +38,7 @@
       "OOP",
       "CLI"
     ],
-    "github": "#",
-    "demo": "#",
+    "github": "https://github.com/JesusV545/Investments-Sim",
     "images": [
       "investment-sim.png",
       "investment-graph.png",
