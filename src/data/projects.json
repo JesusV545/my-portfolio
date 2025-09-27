@@ -1,0 +1,51 @@
+[
+  {
+    "title": "UMC Fleet Management",
+    "description": "A full-stack web app to track ambulance maintenance. Built with React, Node.js, and MongoDB.",
+    "tech": [
+      "React",
+      "Node.js",
+      "Express",
+      "MongoDB"
+    ],
+    "github": "https://github.com/JesusV545/umc-fleet-management",
+    "demo": "#",
+    "images": [
+      "fleet-overview.png",
+      "report-damage.png",
+      "ambulance.png"
+    ]
+  },
+  {
+    "title": "GreenUP",
+    "description": "Sustainability-focused web app that motivates communities to take eco-friendly actions with tracked challenges and resources.",
+    "tech": [
+      "React",
+      "Tailwind CSS",
+      "Node.js"
+    ],
+    "github": "https://github.com/JesusV545/GreenUP",
+    "demo": "https://greenup-production.up.railway.app/",
+    "images": [
+      "GreenUpLanding.png",
+      "GreenUPAbout.png",
+      "greenUPLogo.png"
+    ]
+  },
+  {
+    "title": "Investment Simulator",
+    "description": "C++ console app that calculates compound growth with and without monthly deposits.",
+    "tech": [
+      "C++",
+      "OOP",
+      "CLI"
+    ],
+    "github": "#",
+    "demo": "#",
+    "images": [
+      "investment-sim.png",
+      "investment-graph.png",
+      "investment-finance.png"
+    ]
+  }
+]
