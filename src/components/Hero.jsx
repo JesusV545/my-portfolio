@@ -5,9 +5,8 @@ export default function Hero() {
         Hi, I'm Jesus Vazquez.
       </h1>
       <p className="mt-4 text-lg sm:text-xl text-brand-700 max-w-xl">
-        I’m a versatile developer interested in full-stack development, DevOps, and site reliability engineering. 
-        I focus on building high-quality, scalable, and user-centered applications while exploring best practices 
-        in automation and infrastructure.
+        Computer Science student and EMT building practical web applications 
+        while working toward a career in IT systems and cybersecurity.
       </p>
       <a
         href="#projects"
