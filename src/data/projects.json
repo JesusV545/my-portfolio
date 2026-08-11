@@ -44,5 +44,20 @@
       "investment-graph.png",
       "investment-finance.png"
     ]
+  },
+  {
+    "title": "Rescue Track",
+    "description": "Java console application for managing rescue animals, with validated intake and reservation workflows backed by persistent SQLite storage.",
+    "tech": [
+      "Java",
+      "SQLite",
+      "JDBC",
+      "OOP"
+    ],
+    "github": "https://github.com/JesusV545/Rescue-Track",
+    "youtube": "https://youtu.be/aWf3kwx8na4",
+    "images": [
+      "https://img.youtube.com/vi/aWf3kwx8na4/hqdefault.jpg"
+    ]
   }
 ]

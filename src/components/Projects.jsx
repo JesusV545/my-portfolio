@@ -20,7 +20,7 @@ export default function Projects() {
   );
 }
 
-function ProjectCard({ title, description, tech = [], github, image, images }) {
+function ProjectCard({ title, description, tech = [], github, youtube, image, images }) {
   // Normalize to an array so we support both "image" and "images"
   const imageList = useMemo(() => images || (image ? [image] : []), [images, image]);
 
@@ -32,7 +32,7 @@ function ProjectCard({ title, description, tech = [], github, image, images }) {
   useEffect(() => {
     imageList.forEach((img) => {
       const i = new Image();
-      i.src = new URL(`../assets/projects/${img}`, import.meta.url).href;
+      i.src = resolveImageSource(img);
     });
   }, [imageList]);
 
@@ -66,7 +66,7 @@ function ProjectCard({ title, description, tech = [], github, image, images }) {
         >
           {/* Stack all images and fade opacity based on 'current' */}
           {imageList.map((img, idx) => {
-            const src = new URL(`../assets/projects/${img}`, import.meta.url).href;
+            const src = resolveImageSource(img);
             const isActive = idx === current;
             return (
               <img
@@ -137,17 +137,35 @@ function ProjectCard({ title, description, tech = [], github, image, images }) {
           </div>
         )}
 
-        {github && (
-          <a
-            href={github}
-            target="_blank"
-            rel="noreferrer"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 hover:text-brand-900 transition-colors"
-          >
-            GitHub
-          </a>
-        )}
+        <div className="flex flex-wrap items-center gap-4">
+          {github && (
+            <a
+              href={github}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 hover:text-brand-900 transition-colors"
+            >
+              GitHub
+            </a>
+          )}
+          {youtube && (
+            <a
+              href={youtube}
+              target="_blank"
+              rel="noreferrer"
+              className="inline-flex items-center gap-2 text-sm font-semibold text-brand-500 hover:text-brand-900 transition-colors"
+            >
+              Code Review
+            </a>
+          )}
+        </div>
       </div>
     </div>
   );
+}
+
+function resolveImageSource(image) {
+  return /^https?:\/\//i.test(image)
+    ? image
+    : new URL(`../assets/projects/${image}`, import.meta.url).href;
 }

@@ -2,7 +2,6 @@ import { useState } from "react";
 import {
   Mail,
   MapPin,
-  Phone,
   Shield,
   User2,
   Type,
@@ -169,12 +168,6 @@ export default function Contact() {
                 <Mail className="mt-0.5 text-brand-500" />
                 <a href="mailto:jesusvazquez690@gmail.com" className="text-brand-900 hover:underline">
                   jesusvazquez690@gmail.com
-                </a>
-              </div>
-              <div className="flex items-start gap-3">
-                <Phone className="mt-0.5 text-brand-500" />
-                <a href="tel:+19563070173" className="text-brand-900 hover:underline">
-                  (956) 307-0173
                 </a>
               </div>
               <div className="flex items-start gap-3">
